@@ -6,9 +6,6 @@ class LinkedList:
             self.value = value
             self.next = next
 
-        def setnext(self, next):
-            self.next = next
-
         def __repr__(self):
             return str(self.value)
 
@@ -52,6 +49,14 @@ class LinkedList:
 
         self.numItems += 1
 
+    def remove_first(self):
+        if self.numItems == 0:
+            return
+        self.first = self.first.next
+        self.numItems -= 1
+        if self.numItems == 0:
+            self.last = None
+
     def remove_last(self):
         cursor = self.first
         for i in range(self.numItems):
@@ -73,8 +78,12 @@ class LinkedList:
             ls.append(cursor)
         return str(ls)
 
+    def clear(self):
+        self.first = None
+        self.last = self.first
+        self.numItems = 0
+
     def reverse(self):
-        last = self.first
         cursor = self.first
         prev = None
         while cursor is not None:
@@ -85,7 +94,12 @@ class LinkedList:
         self.first = prev
 
     def add(self, other):
-        self.last.next = other.first
+        if other.numItems == 0:
+            return
+        if self.numItems == 0:
+            self.first = other.first
+        else:
+            self.last.next = other.first
 
 
 if __name__ == '__main__':

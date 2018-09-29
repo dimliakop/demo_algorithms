@@ -35,6 +35,15 @@ class UtilsTestCase(TestCase):
         llist.insert(0, 4)
         self.assertEqual('[4]', str(llist))
 
+    def test_remove_first(self):
+        llist = DoublyLinkedList([-2, -1, 1, 3, 4, 5])
+        llist.remove_first()
+        self.assertEqual('[-1, 1, 3, 4, 5]', str(llist))
+
+    def test_remove_first_from_empty_list(self):
+        llist = DoublyLinkedList()
+        llist.remove_first()
+        self.assertEqual('[]', str(llist))
     def test_remove_last(self):
         llist = DoublyLinkedList([-2, -1, 1, 3, 4, 5])
         llist.remove_last()
@@ -49,6 +58,11 @@ class UtilsTestCase(TestCase):
         llist = DoublyLinkedList([7, 14, 2, 4])
         llist.reverse()
         self.assertEqual('[4, 2, 14, 7]', str(llist))
+
+    def test_reverse_an_empty_list(self):
+        llist = DoublyLinkedList()
+        llist.reverse()
+        self.assertEqual('[]', str(llist))
 
     def test_concatenate_other(self):
         llist1 = DoublyLinkedList([2, 6, 4])
