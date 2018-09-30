@@ -1,5 +1,7 @@
 from unittest import TestCase, main
-from doubly_linkedlist import DoublyLinkedList
+
+from doubly_linkedlist.doubly_linkedlist import DoublyLinkedList
+
 
 class UtilsTestCase(TestCase):
     def test_create_empty_DoublyLinkedList(self):

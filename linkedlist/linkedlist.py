@@ -11,7 +11,7 @@ class LinkedList:
 
     def __init__(self, node_list=None):
         self.first, self.last = None, None
-        self.numItems = 0
+        self.count = 0
 
         if node_list:
             for e in node_list:
@@ -19,7 +19,7 @@ class LinkedList:
 
     def append(self, item):
         node = LinkedList.__Node(item)
-        if self.numItems == 0:
+        if self.count == 0:
             self.last = node
             self.first = self.last
         else:
@@ -27,10 +27,22 @@ class LinkedList:
             self.last = node
             cursor.next = node
 
-        self.numItems += 1
+        self.count += 1
+
+    def add_first(self, item):
+        node = LinkedList.__Node(item)
+
+        if self.count == 0:
+            self.last = node
+        else:
+            cursor = self.first
+            node.next = cursor
+
+        self.first = node
+        self.count += 1
 
     def insert(self, index, item):
-        if index >= self.numItems:
+        if index >= self.count:
             self.append(item)
             return
 
@@ -47,41 +59,30 @@ class LinkedList:
             node.next = cursor.next
             cursor.next = node
 
-        self.numItems += 1
+        self.count += 1
 
     def remove_first(self):
-        if self.numItems == 0:
+        if self.count == 0:
             return
         self.first = self.first.next
-        self.numItems -= 1
-        if self.numItems == 0:
+        self.count -= 1
+        if self.count == 0:
             self.last = None
 
     def remove_last(self):
         cursor = self.first
-        for i in range(self.numItems):
+        for i in range(self.count):
             if cursor.next == self.last:
                 cursor.next = None
                 self.last = cursor
-                self.numItems -= 1
+                self.count -= 1
             else:
                 cursor = cursor.next
-
-    def __str__(self):
-        ret = []
-        if self.first == None:
-            return str(ret)
-        cursor = self.first
-        ls = [cursor]
-        while cursor.next is not None:
-            cursor = cursor.next
-            ls.append(cursor)
-        return str(ls)
 
     def clear(self):
         self.first = None
         self.last = self.first
-        self.numItems = 0
+        self.count = 0
 
     def reverse(self):
         cursor = self.first
@@ -94,12 +95,23 @@ class LinkedList:
         self.first = prev
 
     def add(self, other):
-        if other.numItems == 0:
+        if other.count == 0:
             return
-        if self.numItems == 0:
+        if self.count == 0:
             self.first = other.first
         else:
             self.last.next = other.first
+
+    def __str__(self):
+        ret = []
+        if self.first == None:
+            return str(ret)
+        cursor = self.first
+        ls = [cursor]
+        while cursor.next is not None:
+            cursor = cursor.next
+            ls.append(cursor)
+        return str(ls)
 
 
 if __name__ == '__main__':

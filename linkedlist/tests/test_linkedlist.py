@@ -1,5 +1,7 @@
 from unittest import TestCase, main
-from linkedlist import LinkedList
+
+from linkedlist.linkedlist import LinkedList
+
 
 class UtilsTestCase(TestCase):
     def test_create_empty_linkedlist(self):
@@ -54,6 +56,16 @@ class UtilsTestCase(TestCase):
         llist = LinkedList()
         llist.remove_last()
         self.assertEqual('[]', str(llist))
+
+    def test_add_first_on_empty_list(self):
+        llist = LinkedList()
+        llist.add_first(7)
+        self.assertEqual('[7]', str(llist))
+
+    def test_add_first_on_non_empty_list(self):
+        llist = LinkedList([2, 9])
+        llist.add_first(7)
+        self.assertEqual('[7, 2, 9]', str(llist))
 
     def test_reverse(self):
         llist = LinkedList([7, 14, 2, 4])

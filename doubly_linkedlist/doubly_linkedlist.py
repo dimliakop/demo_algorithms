@@ -12,7 +12,7 @@ class DoublyLinkedList:
 
     def __init__(self, node_list=None):
         self.first, self.last = None, None
-        self.numItems = 0
+        self.count = 0
 
         if node_list:
             for e in node_list:
@@ -20,7 +20,7 @@ class DoublyLinkedList:
 
     def append(self, item):
         node = DoublyLinkedList.__Node(item)
-        if self.numItems == 0:
+        if self.count == 0:
             self.last = node
             self.first = self.last
             self.first.previous = None
@@ -30,10 +30,10 @@ class DoublyLinkedList:
             self.last = node
             cursor.next = node
 
-        self.numItems += 1
+        self.count += 1
 
     def insert(self, index, item):
-        if index >= self.numItems:
+        if index >= self.count:
             self.append(item)
             return
 
@@ -52,23 +52,23 @@ class DoublyLinkedList:
             node.previous = cursor.previous
             cursor.previous = node
 
-        self.numItems += 1
+        self.count += 1
 
     def remove_first(self):
-        if self.numItems == 0:
+        if self.count == 0:
             return
         self.first = self.first.next
         self.first.previous = None
-        self.numItems -= 1
-        if self.numItems == 0:
+        self.count -= 1
+        if self.count == 0:
             self.last = None
 
     def remove_last(self):
-        if self.numItems == 0:
+        if self.count == 0:
             return
         self.last.previous.next = None
         self.last = self.last.previous
-        self.numItems -= 1
+        self.count -= 1
 
     def __str__(self):
         ret = []
@@ -84,18 +84,18 @@ class DoublyLinkedList:
     def clear(self):
         self.first = None
         self.last = self.first
-        self.numItems = 0
+        self.count = 0
 
     def add(self, other):
-        if other.numItems == 0:
+        if other.count == 0:
             return
-        if self.numItems == 0:
+        if self.count == 0:
             self.first = other.first
         else:
             self.last.next = other.first
 
     def reverse(self):
-        if self.numItems == 0:
+        if self.count == 0:
             return
         dl = DoublyLinkedList()
         cursor = self.last
