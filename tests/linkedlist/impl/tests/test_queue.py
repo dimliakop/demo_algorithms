@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.linkedlist.stack.stack import Stack
+from src.linkedlist.impl.stack import Stack
 
 
 class UtilsTestCase(TestCase):
