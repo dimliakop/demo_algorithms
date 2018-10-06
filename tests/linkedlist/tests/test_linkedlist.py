@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 
-from linkedlist.linkedlist import LinkedList
+from src.linkedlist.linkedlist import LinkedList
 
 
 class UtilsTestCase(TestCase):

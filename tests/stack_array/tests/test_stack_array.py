@@ -1,6 +1,6 @@
-from unittest import TestCase, main
+from unittest import TestCase
 
-from stack_array.stack_array import StackArray
+from src.stack_array.stack_array import StackArray
 
 
 class UtilsTestCase(TestCase):
