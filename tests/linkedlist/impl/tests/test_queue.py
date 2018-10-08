@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from src.linkedlist.impl.queue import Queue
 
-
+# TODO : implement the Queue
 class UtilsTestCase(TestCase):
     def test_create_empty_queue(self):
         queue = Queue()
